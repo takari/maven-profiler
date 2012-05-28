@@ -62,7 +62,6 @@ public class LifecycleProfiler extends AbstractEventSpy {
           phaseProfile = new PhaseProfile(phase);
         } else if (!phaseProfile.getPhase().equals(phase)) {
           phaseProfile.stop();
-          System.out.println(">> phase time : " + phaseProfile.getElapsedTime());
           projectProfile.addPhaseProfile(phaseProfile);
           phaseProfile = new PhaseProfile(phase);          
         }
