@@ -25,23 +25,28 @@ public class Timer {
   public static String formatTime(long ms) {
     long secs = ms / MS_PER_SEC;
     long mins = secs / SEC_PER_MIN;
-    secs = secs % SEC_PER_MIN;    
+    secs = secs % SEC_PER_MIN;
     long fractionOfASecond = ms - (secs * 1000);
-//    System.out.println("mins " + mins);
-//    System.out.println("secs " + secs);
-//    System.out.println(fractionOfASecond);
-//    System.out.println(">> " + fractionOfASecond);
-    
-    String msg = mins + "m " + secs + "." + fractionOfASecond;
 
-    if (msg.length() == 3) {
-      msg += "00s";
-    } else if (msg.length() == 4) {
-      msg += "0s";
-    } else {
-      msg += "s";
-    }
+      StringBuilder msg = new StringBuilder();
+      if (mins > 0)
+      {
+          msg.append(mins);
+          msg.append("m ");
+      }
+      if (secs > 0)
+      {
+          msg.append(secs);
+          msg.append("s");
+      }
 
-    return msg;
+      if ( mins == 0)
+      {
+          if (msg.length() > 0 ) msg.append(" ");
+          msg.append(fractionOfASecond);
+          msg.append("ms");
+      }
+
+      return msg.toString();
   }
 }
