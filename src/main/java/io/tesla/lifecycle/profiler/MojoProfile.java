@@ -1,5 +1,7 @@
 package io.tesla.lifecycle.profiler;
 
+import io.tesla.lifecycle.profiler.internal.DefaultTimer;
+
 import org.apache.maven.plugin.MojoExecution;
 
 public class MojoProfile extends Profile {
@@ -7,7 +9,7 @@ public class MojoProfile extends Profile {
   private MojoExecution mojoExecution;
   
   protected MojoProfile(MojoExecution mojoExecution) {
-    super(new Timer());
+    super(new DefaultTimer());
     this.mojoExecution = mojoExecution;
   }
   

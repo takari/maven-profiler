@@ -1,11 +1,13 @@
 package io.tesla.lifecycle.profiler;
 
+import io.tesla.lifecycle.profiler.internal.DefaultTimer;
+
 public class Profile {
   
   protected long elapsedTime;
   protected Timer timer;
     
-  protected Profile(Timer timer) {
+  protected Profile(DefaultTimer timer) {
     this.timer = timer;    
   }
     

@@ -1,5 +1,6 @@
 package io.tesla.lifecycle.profiler;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
@@ -13,11 +14,24 @@ import org.apache.maven.execution.ExecutionEvent;
 @Singleton
 public class LifecycleProfiler extends AbstractEventSpy {
 
+  //
+  // Components
+  //
+  private SessionProfileRenderer sessionProfileRenderer;
+  
+  //
+  // Profile data
+  //
   private SessionProfile sessionProfile;
   private ProjectProfile projectProfile;
   private PhaseProfile phaseProfile;
-  private MojoProfile mojoProfile;
-
+  private MojoProfile mojoProfile;  
+  
+  @Inject
+  public LifecycleProfiler(SessionProfileRenderer sessionProfileRenderer) {
+    this.sessionProfileRenderer = sessionProfileRenderer;
+  }
+  
   @Override
   public void init(Context context) throws Exception {
   }
@@ -39,8 +53,7 @@ public class LifecycleProfiler extends AbstractEventSpy {
         //
         sessionProfile.stop();
         
-        SessionProfileRenderer r = new SessionProfileRenderer();
-        r.render(sessionProfile);
+        sessionProfileRenderer.render(sessionProfile);
         
       } else if (executionEvent.getType() == ExecutionEvent.Type.ProjectStarted) {
         //

@@ -1,13 +1,17 @@
 package io.tesla.lifecycle.profiler;
 
-import junit.framework.TestCase;
+import javax.inject.Inject;
 
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.MojoExecution;
 import org.apache.maven.project.MavenProject;
+import org.sonatype.guice.bean.containers.InjectedTestCase;
 
 
-public class LifecycleProfilerTest extends TestCase {
+public class LifecycleProfilerTest extends InjectedTestCase {
+  
+  @Inject
+  private SessionProfileRenderer sessionProfileRenderer;
   
   public void testSessionProfile() {
     
@@ -40,8 +44,7 @@ public class LifecycleProfilerTest extends TestCase {
     p2.addPhaseProfile(ph2);
     s.addProjectProfile(p2);
     
-    SessionProfileRenderer r = new SessionProfileRenderer();
-    r.render(s);
+    sessionProfileRenderer.render(s);
   }
   
   protected MavenProject project(String g, String a, String v) {
