@@ -5,8 +5,7 @@ import javax.inject.Inject;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.MojoExecution;
 import org.apache.maven.project.MavenProject;
-import org.sonatype.guice.bean.containers.InjectedTestCase;
-
+import org.eclipse.sisu.launch.InjectedTestCase;
 
 public class LifecycleProfilerTest extends InjectedTestCase {
   

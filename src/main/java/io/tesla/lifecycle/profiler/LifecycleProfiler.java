@@ -17,21 +17,21 @@ public class LifecycleProfiler extends AbstractEventSpy {
   //
   // Components
   //
-  private SessionProfileRenderer sessionProfileRenderer;
-  
+  private SessionProfileRenderer renderer;
+
   //
   // Profile data
   //
   private SessionProfile sessionProfile;
   private ProjectProfile projectProfile;
   private PhaseProfile phaseProfile;
-  private MojoProfile mojoProfile;  
-  
+  private MojoProfile mojoProfile;
+
   @Inject
   public LifecycleProfiler(SessionProfileRenderer sessionProfileRenderer) {
-    this.sessionProfileRenderer = sessionProfileRenderer;
+    this.renderer = sessionProfileRenderer;
   }
-  
+
   @Override
   public void init(Context context) throws Exception {
   }
@@ -39,8 +39,6 @@ public class LifecycleProfiler extends AbstractEventSpy {
   @Override
   public void onEvent(Object event) throws Exception {
     if (event instanceof ExecutionEvent) {
-      
-      
       ExecutionEvent executionEvent = (ExecutionEvent) event;
       if (executionEvent.getType() == ExecutionEvent.Type.SessionStarted) {
         //
@@ -52,9 +50,9 @@ public class LifecycleProfiler extends AbstractEventSpy {
         //
         //
         sessionProfile.stop();
-        
-        sessionProfileRenderer.render(sessionProfile);
-        
+        if (System.getProperty("profile") != null) {
+          renderer.render(sessionProfile);
+        }
       } else if (executionEvent.getType() == ExecutionEvent.Type.ProjectStarted) {
         //
         // We need to collect the mojoExecutions within each project
@@ -71,12 +69,12 @@ public class LifecycleProfiler extends AbstractEventSpy {
         //
         // Create a new phase profile if one doesn't exist or the phase has changed.
         //
-        if(phaseProfile == null) {
+        if (phaseProfile == null) {
           phaseProfile = new PhaseProfile(phase);
         } else if (!phaseProfile.getPhase().equals(phase)) {
           phaseProfile.stop();
           projectProfile.addPhaseProfile(phaseProfile);
-          phaseProfile = new PhaseProfile(phase);          
+          phaseProfile = new PhaseProfile(phase);
         }
         mojoProfile = new MojoProfile(executionEvent.getMojoExecution());
       } else if (executionEvent.getType() == ExecutionEvent.Type.MojoSucceeded || executionEvent.getType() == ExecutionEvent.Type.MojoFailed) {
@@ -84,7 +82,7 @@ public class LifecycleProfiler extends AbstractEventSpy {
         //
         //
         mojoProfile.stop();
-        phaseProfile.addMojoProfile(mojoProfile);        
+        phaseProfile.addMojoProfile(mojoProfile);
       }
     }
   }
