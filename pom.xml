@@ -7,7 +7,7 @@
     <artifactId>tesla</artifactId>
     <version>5</version>
   </parent>
-  <groupId>org.eclipse.tesla</groupId>
+  <groupId>io.tesla.profile</groupId>
   <artifactId>tesla-profiler</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Tesla :: Profiler</name>
