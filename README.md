@@ -1,6 +1,6 @@
 # Tesla profiler
 
-The Tesla profiler is a simple EventSpy implementation that gathers timing information. It collects the time is takes to execute each mojo and gathers them within the phase they run. This was originall written to find a particular hotspot and it not formatted particularly and definitely needs improvement.
+The Tesla profiler is a simple EventSpy implementation that gathers timing information. It collects the time it takes to execute each mojo and gathers them within the phase they run. This was originally written to find a particular hotspot and it not formatted particularly well and definitely needs improvement.
 
 To profile your build you need to install the profiling extension your Maven/Tesla distribution. Find the [latest version in Maven Central][1] and install it in the `${M2_HOME}/lib/ext` directory.
 
