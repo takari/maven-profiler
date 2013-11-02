@@ -59,4 +59,4 @@ org.apache.maven:maven-core:3.1.2-SNAPSHOT
     org.apache.maven.plugins:maven-site-plugin:3.3 (attach-descriptor) 869ms
 
 ```
-[1]: http://repo.maven.apache.org/maven2/io/tesla/profile/tesla-profiler
+[1]: http://repo.maven.apache.org/maven2/io/tesla/profile/tesla-profiler/
