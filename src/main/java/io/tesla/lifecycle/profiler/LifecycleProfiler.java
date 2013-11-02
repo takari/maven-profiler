@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2012 to original author or authors
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package io.tesla.lifecycle.profiler;
 
 import javax.inject.Inject;
@@ -7,6 +14,11 @@ import javax.inject.Singleton;
 import org.apache.maven.eventspy.AbstractEventSpy;
 import org.apache.maven.execution.ExecutionEvent;
 
+// pom deserialization
+// app dependency download
+// plugin dependency download
+// mojo execution
+
 /**
  * @author Jason van Zyl
  */
@@ -14,6 +26,8 @@ import org.apache.maven.execution.ExecutionEvent;
 @Singleton
 public class LifecycleProfiler extends AbstractEventSpy {
 
+  private final static String TESLA_PROFILE = "tesla.profile";
+  
   //
   // Components
   //
@@ -50,7 +64,7 @@ public class LifecycleProfiler extends AbstractEventSpy {
         //
         //
         sessionProfile.stop();
-        if (System.getProperty("profile") != null) {
+        if (System.getProperty(TESLA_PROFILE) != null) {
           renderer.render(sessionProfile);
         }
       } else if (executionEvent.getType() == ExecutionEvent.Type.ProjectStarted) {
