@@ -15,25 +15,25 @@ import org.apache.maven.project.MavenProject;
 import org.eclipse.sisu.launch.InjectedTestCase;
 
 public class LifecycleProfilerTest extends InjectedTestCase {
-  
+
   @Inject
   private SessionProfileRenderer sessionProfileRenderer;
-  
+
   public void testSessionProfile() {
-    
+
     SessionProfile s = new SessionProfile();
-    
+
     ProjectProfile p0 = new ProjectProfile(project("g0", "a0", "v0"));
     PhaseProfile ph0 = new PhaseProfile("phase0");
-    MojoProfile m0 = new MojoProfile(mojoExecution("goal0","m0"));
+    MojoProfile m0 = new MojoProfile(mojoExecution("goal0", "m0"));
     m0.setElapsedTime(3000);
     ph0.addMojoProfile(m0);
-    MojoProfile m00 = new MojoProfile(mojoExecution("goal00","m00"));
+    MojoProfile m00 = new MojoProfile(mojoExecution("goal00", "m00"));
     m00.setElapsedTime(5492009);
     ph0.addMojoProfile(m00);
     p0.addPhaseProfile(ph0);
     s.addProjectProfile(p0);
-    
+
     ProjectProfile p1 = new ProjectProfile(project("g1", "a1", "v1"));
     PhaseProfile ph1 = new PhaseProfile("phase1");
     MojoProfile m1 = new MojoProfile(mojoExecution("goal1", "m1"));
@@ -44,15 +44,15 @@ public class LifecycleProfilerTest extends InjectedTestCase {
 
     ProjectProfile p2 = new ProjectProfile(project("g2", "a2", "v2"));
     PhaseProfile ph2 = new PhaseProfile("phase2");
-    MojoProfile m2 = new MojoProfile(mojoExecution("goal2","m2"));
+    MojoProfile m2 = new MojoProfile(mojoExecution("goal2", "m2"));
     m2.setElapsedTime(5000);
     ph2.addMojoProfile(m2);
     p2.addPhaseProfile(ph2);
     s.addProjectProfile(p2);
-    
+
     sessionProfileRenderer.render(s);
   }
-  
+
   protected MavenProject project(String g, String a, String v) {
     MavenProject p = new MavenProject();
     p.setGroupId(g);
@@ -60,13 +60,13 @@ public class LifecycleProfilerTest extends InjectedTestCase {
     p.setVersion(v);
     return p;
   }
-  
+
   protected MojoExecution mojoExecution(String goal, String executionId) {
     Plugin p = new Plugin();
     p.setGroupId("groupId");
     p.setArtifactId("artifactId");
     p.setVersion("version");
     MojoExecution me = new MojoExecution(p, goal, executionId);
-    return me;        
+    return me;
   }
 }
