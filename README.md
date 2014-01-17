@@ -7,7 +7,7 @@ To profile your build you need to install the profiling extension your Maven/Tes
 To active the profiling you need to enable the `profile` system property:
 
 ```
-mvn clean install -Dprofile
+mvn clean install -Dmaven.profile
 ```
 
 Here's an example of what the output will look like:

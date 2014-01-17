@@ -26,7 +26,7 @@ import org.apache.maven.execution.ExecutionEvent;
 @Singleton
 public class LifecycleProfiler extends AbstractEventSpy {
 
-  private final static String TESLA_PROFILE = "tesla.profile";
+  private final static String TESLA_PROFILE = "maven.profile";
   
   //
   // Components
