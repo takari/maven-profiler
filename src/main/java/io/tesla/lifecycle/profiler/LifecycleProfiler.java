@@ -26,12 +26,11 @@ import org.apache.maven.execution.ExecutionEvent;
 @Singleton
 public class LifecycleProfiler extends AbstractEventSpy {
 
-  private final static String TESLA_PROFILE = "maven.profile";
-  
-  //
-  // Components
-  //
-  private SessionProfileRenderer renderer;
+  private final static String MAVEN_PROFILE = "maven.profile";
+
+  private final SessionProfileRenderer renderer;
+
+  private final boolean disabled;
 
   //
   // Profile data
@@ -43,7 +42,9 @@ public class LifecycleProfiler extends AbstractEventSpy {
 
   @Inject
   public LifecycleProfiler(SessionProfileRenderer sessionProfileRenderer) {
+    super();
     this.renderer = sessionProfileRenderer;
+    this.disabled = (System.getProperty(MAVEN_PROFILE) == null);
   }
 
   @Override
@@ -52,21 +53,27 @@ public class LifecycleProfiler extends AbstractEventSpy {
 
   @Override
   public void onEvent(Object event) throws Exception {
+    if (this.disabled) {
+      return;
+    }
     if (event instanceof ExecutionEvent) {
       ExecutionEvent executionEvent = (ExecutionEvent) event;
       if (executionEvent.getType() == ExecutionEvent.Type.SessionStarted) {
         //
         //
         //
-        sessionProfile = new SessionProfile();
+        StringBuilder command = new StringBuilder("mvn");
+        for (String goal : executionEvent.getSession().getGoals()) {
+          command.append(' ');
+          command.append(goal);
+        }
+        sessionProfile = new SessionProfile(command.toString());
       } else if (executionEvent.getType() == ExecutionEvent.Type.SessionEnded) {
         //
         //
         //
         sessionProfile.stop();
-        if (System.getProperty(TESLA_PROFILE) != null) {
-          renderer.render(sessionProfile);
-        }
+        renderer.render(sessionProfile);
       } else if (executionEvent.getType() == ExecutionEvent.Type.ProjectStarted) {
         //
         // We need to collect the mojoExecutions within each project

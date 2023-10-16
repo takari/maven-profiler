@@ -1,5 +1,12 @@
+.*
+!.github
+!.gitignore
+!.mvn
+*.bak
+*.log
+*.diff
+*.patch
+*.iml
 target
-.project
-.classpath
-.settings
 release.properties
+
