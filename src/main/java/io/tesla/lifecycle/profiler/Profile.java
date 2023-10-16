@@ -7,29 +7,25 @@
  */
 package io.tesla.lifecycle.profiler;
 
-import io.tesla.lifecycle.profiler.internal.DefaultTimer;
+import java.util.Collection;
+import java.util.List;
 
-public class Profile {
-  
-  protected long elapsedTime;
-  protected Timer timer;
-    
-  protected Profile(DefaultTimer timer) {
-    this.timer = timer;    
-  }
-    
-  public void stop() {
-    timer.stop();
-  }
-  
-  void setElapsedTime(long elapsedTime) {
-    this.elapsedTime = elapsedTime;
-  }
-  
-  public long getElapsedTime() {
-    if(elapsedTime != 0) {
-      return elapsedTime;
-    }
-    return timer.getTime();
-  }
+/**
+ * Interface for a profile of the profiling. The root profile is {@link SessionProfile} representing the recording of the
+ * entire session. Each {@link Profile} can have {@link #getChildren() children} representing a partition of the whole
+ * into smaller steps to give more details and granularity to trace down leaks and find spots worth to optimize.
+ */
+public interface Profile extends Timing {
+
+  /**
+   * @return the name of this profile (name of e.g. maven project, phase, plugin).
+   */
+  String getName();
+
+  /**
+   * @return the {@link List} of child {@link Profile}s contained in this {@link Profile}. Will be an empty list if this
+   *         profile has not children.
+   */
+  Collection<? extends Profile> getChildren();
+
 }

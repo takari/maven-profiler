@@ -8,15 +8,15 @@
 package io.tesla.lifecycle.profiler;
 
 /**
- * Interface for a simple timer that is like a stop-watch. Once created, it starts ticking until you {@link #stop() stop} it.
- * Then you can use {@link #getElapsedTime()} to retrieve the elapsed duration.
+ * Interface for an object that records the timing and therefore has an {@link #getElapsedTime() elapsed time}.
  */
-public interface Timer extends Timing {
+public interface Timing {
 
   /**
-   * Stops this timer. Should only be called once.
+   * @return the duration in milliseconds of this timing. Typically the duration from the instantiation a {@link Timer}
+   *         until it has been {@link Timer#stop() stop}ed.
    */
-  void stop();
+  long getElapsedTime();
 
 //  default Duration getDuration() {
 //

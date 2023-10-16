@@ -21,7 +21,7 @@ public class LifecycleProfilerTest extends InjectedTestCase {
 
   public void testSessionProfile() {
 
-    SessionProfile s = new SessionProfile();
+    SessionProfile s = new SessionProfile("mvn");
 
     ProjectProfile p0 = new ProjectProfile(project("g0", "a0", "v0"));
     PhaseProfile ph0 = new PhaseProfile("phase0");

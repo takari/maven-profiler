@@ -7,17 +7,17 @@
  */
 package io.tesla.lifecycle.profiler.internal;
 
-import io.tesla.lifecycle.profiler.Timer;
-
 import javax.inject.Named;
 import javax.inject.Singleton;
+
+import io.tesla.lifecycle.profiler.Timer;
 
 @Named
 @Singleton
 public class DefaultTimer implements Timer {
-  
-  public static final int MS_PER_SEC = 1000;
-  public static final int SEC_PER_MIN = 60;
+  static final int MS_PER_SEC = 1000;
+  static final int SEC_PER_MIN = 60;
+
   private long start;
   private long time;
 
@@ -25,11 +25,13 @@ public class DefaultTimer implements Timer {
     start = System.currentTimeMillis();
   }
 
+  @Override
   public void stop() {
     time = elapsedTime();
   }
 
-  public long getTime() {
+  @Override
+  public long getElapsedTime() {
     return time;
   }
 
@@ -37,11 +39,12 @@ public class DefaultTimer implements Timer {
     return System.currentTimeMillis() - start;
   }
 
-  public String format(long ms) {
-    long secs = ms / MS_PER_SEC;
+  protected static String formatMilliseconds(long durationInMillis) {
+
+    long secs = durationInMillis / MS_PER_SEC;
     long mins = secs / SEC_PER_MIN;
     secs = secs % SEC_PER_MIN;
-    long fractionOfASecond = ms - (secs * 1000);
+    long fractionOfASecond = durationInMillis - (secs * 1000);
 
     StringBuilder msg = new StringBuilder();
     if (mins > 0) {
@@ -62,4 +65,5 @@ public class DefaultTimer implements Timer {
 
     return msg.toString();
   }
+
 }

@@ -7,24 +7,22 @@
  */
 package io.tesla.lifecycle.profiler;
 
-import io.tesla.lifecycle.profiler.internal.DefaultTimer;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.maven.project.MavenProject;
 
-public class ProjectProfile extends Profile {
+public class ProjectProfile extends AbstractTimerProfile {
 
   private MavenProject project;
   private List<PhaseProfile> phaseProfiles;
-  
+
   public ProjectProfile(MavenProject project) {
-    super(new DefaultTimer());
+    super();
     this.project = project;
     this.phaseProfiles = new ArrayList<PhaseProfile>();
   }
-  
+
   public void addPhaseProfile(PhaseProfile phaseProfile) {
     phaseProfiles.add(phaseProfile);
   }
@@ -35,5 +33,17 @@ public class ProjectProfile extends Profile {
 
   public List<PhaseProfile> getPhaseProfile() {
     return phaseProfiles;
+  }
+
+  @Override
+  public String getName() {
+
+    return getProjectName();
+  }
+
+  @Override
+  public List<? extends Profile> getChildren() {
+
+    return getPhaseProfile();
   }
 }
