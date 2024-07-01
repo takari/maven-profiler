@@ -31,7 +31,7 @@
 
     <!-- These two should be changed in lockstep: whatever in current maven version is -->
     <mavenVersion>3.6.3</mavenVersion>
-    <sisuVersion>0.3.4</sisuVersion>
+    <sisuVersion>0.3.5</sisuVersion>
   </properties>
 
   <dependencies>
