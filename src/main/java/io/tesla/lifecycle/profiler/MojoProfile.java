@@ -7,21 +7,34 @@
  */
 package io.tesla.lifecycle.profiler;
 
-import io.tesla.lifecycle.profiler.internal.DefaultTimer;
+import java.util.Collections;
+import java.util.List;
 
 import org.apache.maven.plugin.MojoExecution;
 
-public class MojoProfile extends Profile {
+public class MojoProfile extends AbstractTimerProfile {
 
   private MojoExecution mojoExecution;
-  
+
   protected MojoProfile(MojoExecution mojoExecution) {
-    super(new DefaultTimer());
+    super();
     this.mojoExecution = mojoExecution;
   }
-  
+
   public String getId() {
-    return mojoExecution.getGroupId() + ":" + mojoExecution.getArtifactId() + ":" + mojoExecution.getVersion() + " (" + mojoExecution.getExecutionId() + ") ";
+    return mojoExecution.getGroupId() + ":" + mojoExecution.getArtifactId() + ":" + mojoExecution.getVersion() + " (" + mojoExecution.getExecutionId() + ")";
+  }
+
+  @Override
+  public String getName() {
+
+    return getId();
+  }
+
+  @Override
+  public List<? extends Profile> getChildren() {
+
+    return Collections.emptyList();
   }
 
 }
