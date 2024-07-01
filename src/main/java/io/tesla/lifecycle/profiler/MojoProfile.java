@@ -9,32 +9,31 @@ package io.tesla.lifecycle.profiler;
 
 import java.util.Collections;
 import java.util.List;
-
 import org.apache.maven.plugin.MojoExecution;
 
 public class MojoProfile extends AbstractTimerProfile {
 
-  private MojoExecution mojoExecution;
+    private MojoExecution mojoExecution;
 
-  protected MojoProfile(MojoExecution mojoExecution) {
-    super();
-    this.mojoExecution = mojoExecution;
-  }
+    protected MojoProfile(MojoExecution mojoExecution) {
+        super();
+        this.mojoExecution = mojoExecution;
+    }
 
-  public String getId() {
-    return mojoExecution.getGroupId() + ":" + mojoExecution.getArtifactId() + ":" + mojoExecution.getVersion() + " (" + mojoExecution.getExecutionId() + ")";
-  }
+    public String getId() {
+        return mojoExecution.getGroupId() + ":" + mojoExecution.getArtifactId() + ":" + mojoExecution.getVersion()
+                + " (" + mojoExecution.getExecutionId() + ")";
+    }
 
-  @Override
-  public String getName() {
+    @Override
+    public String getName() {
 
-    return getId();
-  }
+        return getId();
+    }
 
-  @Override
-  public List<? extends Profile> getChildren() {
+    @Override
+    public List<? extends Profile> getChildren() {
 
-    return Collections.emptyList();
-  }
-
+        return Collections.emptyList();
+    }
 }

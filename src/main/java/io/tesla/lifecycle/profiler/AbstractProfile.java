@@ -9,30 +9,29 @@ package io.tesla.lifecycle.profiler;
 
 public abstract class AbstractProfile implements Profile {
 
-  protected long elapsedTime;
+    protected long elapsedTime;
 
-  protected AbstractProfile() {
-    super();
-  }
+    protected AbstractProfile() {
+        super();
+    }
 
-  /**
-   * @param elapsedTime the new value of {@link #getElapsedTime()}.
-   */
-  public void setElapsedTime(long elapsedTime) {
-    this.elapsedTime = elapsedTime;
-  }
+    /**
+     * @param elapsedTime the new value of {@link #getElapsedTime()}.
+     */
+    public void setElapsedTime(long elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
 
-  /**
-   * @param millis the milliseconds to add to {@link #getElapsedTime() elapsed time}.
-   */
-  public void addElapsedTime(long millis) {
+    /**
+     * @param millis the milliseconds to add to {@link #getElapsedTime() elapsed time}.
+     */
+    public void addElapsedTime(long millis) {
 
-    this.elapsedTime += millis;
-  }
+        this.elapsedTime += millis;
+    }
 
-  @Override
-  public long getElapsedTime() {
-      return elapsedTime;
-  }
-
+    @Override
+    public long getElapsedTime() {
+        return elapsedTime;
+    }
 }

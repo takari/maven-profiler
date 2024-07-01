@@ -13,14 +13,14 @@ package io.tesla.lifecycle.profiler;
  */
 public interface Timer extends Timing {
 
-  /**
-   * Stops this timer. Should only be called once.
-   */
-  void stop();
+    /**
+     * Stops this timer. Should only be called once.
+     */
+    void stop();
 
-//  default Duration getDuration() {
-//
-//    return Duration.of(getTime(), ChronoUnit.MILLIS);
-//  }
+    //  default Duration getDuration() {
+    //
+    //    return Duration.of(getTime(), ChronoUnit.MILLIS);
+    //  }
 
 }

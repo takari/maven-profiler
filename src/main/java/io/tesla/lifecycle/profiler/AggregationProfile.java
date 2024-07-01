@@ -15,61 +15,61 @@ import java.util.Map;
 
 public class AggregationProfile extends AbstractProfile {
 
-  private final String name;
+    private final String name;
 
-  private final Map<String, AggregationProfile> childMap;
+    private final Map<String, AggregationProfile> childMap;
 
-  private final List<AggregationProfile> children;
+    private final List<AggregationProfile> children;
 
-  public AggregationProfile() {
-    this("all");
-  }
-
-  public AggregationProfile(String name) {
-    super();
-    this.name = name;
-    this.childMap = new HashMap<>();
-    this.children = new ArrayList<>();
-  }
-
-  @Override
-  public String getName() {
-
-    return this.name;
-  }
-
-  @Override
-  public long getElapsedTime() {
-
-    long millis = this.elapsedTime;
-    if (millis == 0) {
-      for (AggregationProfile child : this.children) {
-        millis += child.getElapsedTime();
-      }
+    public AggregationProfile() {
+        this("all");
     }
-    return millis;
-  }
 
-  public AggregationProfile getChild(String name) {
+    public AggregationProfile(String name) {
+        super();
+        this.name = name;
+        this.childMap = new HashMap<>();
+        this.children = new ArrayList<>();
+    }
 
-    return this.childMap.get(name);
-  }
+    @Override
+    public String getName() {
 
-  public AggregationProfile getOrCreateChild(String name) {
+        return this.name;
+    }
 
-    return this.childMap.computeIfAbsent(name, this::newAggregationProfile);
-  }
+    @Override
+    public long getElapsedTime() {
 
-  private AggregationProfile newAggregationProfile(String name) {
+        long millis = this.elapsedTime;
+        if (millis == 0) {
+            for (AggregationProfile child : this.children) {
+                millis += child.getElapsedTime();
+            }
+        }
+        return millis;
+    }
 
-    AggregationProfile profile = new AggregationProfile(name);
-    this.children.add(profile);
-    return profile;
-  }
+    public AggregationProfile getChild(String name) {
 
-  @Override
-  public Collection<? extends Profile> getChildren() {
+        return this.childMap.get(name);
+    }
 
-    return this.children;
-  }
+    public AggregationProfile getOrCreateChild(String name) {
+
+        return this.childMap.computeIfAbsent(name, this::newAggregationProfile);
+    }
+
+    private AggregationProfile newAggregationProfile(String name) {
+
+        AggregationProfile profile = new AggregationProfile(name);
+        this.children.add(profile);
+        return profile;
+    }
+
+    @Override
+    public Collection<? extends Profile> getChildren() {
+
+        return this.children;
+    }
 }

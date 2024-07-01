@@ -12,36 +12,36 @@ import java.util.List;
 
 public class PhaseProfile extends AbstractTimerProfile {
 
-  private String phase;
-  private List<MojoProfile> mojoProfiles;
+    private String phase;
+    private List<MojoProfile> mojoProfiles;
 
-  public PhaseProfile(String phase) {
-    super();
-    this.phase = phase;
-    this.mojoProfiles = new ArrayList<MojoProfile>();
-  }
+    public PhaseProfile(String phase) {
+        super();
+        this.phase = phase;
+        this.mojoProfiles = new ArrayList<MojoProfile>();
+    }
 
-  public void addMojoProfile(MojoProfile mojoProfile) {
-    mojoProfiles.add(mojoProfile);
-  }
+    public void addMojoProfile(MojoProfile mojoProfile) {
+        mojoProfiles.add(mojoProfile);
+    }
 
-  public String getPhase() {
-    return phase;
-  }
+    public String getPhase() {
+        return phase;
+    }
 
-  public List<MojoProfile> getMojoProfiles() {
-    return mojoProfiles;
-  }
+    public List<MojoProfile> getMojoProfiles() {
+        return mojoProfiles;
+    }
 
-  @Override
-  public String getName() {
+    @Override
+    public String getName() {
 
-    return phase;
-  }
+        return phase;
+    }
 
-  @Override
-  public List<? extends Profile> getChildren() {
+    @Override
+    public List<? extends Profile> getChildren() {
 
-    return getMojoProfiles();
-  }
+        return getMojoProfiles();
+    }
 }

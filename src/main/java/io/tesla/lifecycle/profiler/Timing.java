@@ -12,15 +12,15 @@ package io.tesla.lifecycle.profiler;
  */
 public interface Timing {
 
-  /**
-   * @return the duration in milliseconds of this timing. Typically the duration from the instantiation a {@link Timer}
-   *         until it has been {@link Timer#stop() stop}ed.
-   */
-  long getElapsedTime();
+    /**
+     * @return the duration in milliseconds of this timing. Typically the duration from the instantiation a {@link Timer}
+     *         until it has been {@link Timer#stop() stop}ed.
+     */
+    long getElapsedTime();
 
-//  default Duration getDuration() {
-//
-//    return Duration.of(getTime(), ChronoUnit.MILLIS);
-//  }
+    //  default Duration getDuration() {
+    //
+    //    return Duration.of(getTime(), ChronoUnit.MILLIS);
+    //  }
 
 }

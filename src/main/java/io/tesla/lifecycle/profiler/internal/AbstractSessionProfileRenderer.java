@@ -7,45 +7,43 @@
  */
 package io.tesla.lifecycle.profiler.internal;
 
-import java.util.Locale;
-
 import io.tesla.lifecycle.profiler.SessionProfileRenderer;
+import java.util.Locale;
 
 /**
  * Abstract base implementation of {@link SessionProfileRenderer}.
  */
 public abstract class AbstractSessionProfileRenderer implements SessionProfileRenderer {
 
-  /** Determines if the profiling report shall be logged at the end of the build */
-  protected final boolean logProfileData;
+    /** Determines if the profiling report shall be logged at the end of the build */
+    protected final boolean logProfileData;
 
-  /**
-   * The constructor.
-   */
-  public AbstractSessionProfileRenderer() {
+    /**
+     * The constructor.
+     */
+    public AbstractSessionProfileRenderer() {
 
-    super();
-    this.logProfileData = getBooleanProperty("maven.profile.log.output", true);
-  }
-
-  /**
-   * @param name the name of the {@link System#getProperty(String) system property}.
-   * @param defaultValue the default value if the {@link System#getProperty(String) system property} is undefined or invalid.
-   * @return the configured boolean value.
-   */
-  protected static boolean getBooleanProperty(String name, boolean defaultValue) {
-
-    boolean result = defaultValue;
-    String valueAsString = System.getProperty(name);
-    if (valueAsString != null) {
-      valueAsString = valueAsString.toLowerCase(Locale.ROOT);
-      if ("true".equals(valueAsString) || "yes".equals(valueAsString)) {
-        result = true;
-      } else if ("false".equals(valueAsString) || "no".equals(valueAsString)) {
-        result = true;
-      }
+        super();
+        this.logProfileData = getBooleanProperty("maven.profile.log.output", true);
     }
-    return result;
-  }
 
+    /**
+     * @param name the name of the {@link System#getProperty(String) system property}.
+     * @param defaultValue the default value if the {@link System#getProperty(String) system property} is undefined or invalid.
+     * @return the configured boolean value.
+     */
+    protected static boolean getBooleanProperty(String name, boolean defaultValue) {
+
+        boolean result = defaultValue;
+        String valueAsString = System.getProperty(name);
+        if (valueAsString != null) {
+            valueAsString = valueAsString.toLowerCase(Locale.ROOT);
+            if ("true".equals(valueAsString) || "yes".equals(valueAsString)) {
+                result = true;
+            } else if ("false".equals(valueAsString) || "no".equals(valueAsString)) {
+                result = true;
+            }
+        }
+        return result;
+    }
 }

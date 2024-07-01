@@ -13,34 +13,35 @@ import io.tesla.lifecycle.profiler.ProjectProfile;
 import io.tesla.lifecycle.profiler.SessionProfile;
 
 // old implementation that has been replaced by AdvancedSessionProfileRenderer. Could actually be removed.
-//@Named
-//@Singleton
+// @Named
+// @Singleton
 public class DefaultSessionProfileRenderer extends AbstractSessionProfileRenderer {
 
-  public DefaultSessionProfileRenderer() {
-    super();
-  }
-
-  public void render(SessionProfile sessionProfile) {
-
-    if (!this.logProfileData) {
-      return;
+    public DefaultSessionProfileRenderer() {
+        super();
     }
-    for(ProjectProfile pp : sessionProfile.getProjectProfiles()) {
-      render("");
-      render(pp.getProjectName());
-      render("");
-      for(PhaseProfile phaseProfile : pp.getPhaseProfile()) {
-        render("  " + phaseProfile.getPhase() + " " + DefaultTimer.formatMilliseconds(phaseProfile.getElapsedTime()));
-        for(MojoProfile mp : phaseProfile.getMojoProfiles()) {
-          render("    " + mp.getId() + DefaultTimer.formatMilliseconds(mp.getElapsedTime()));
+
+    public void render(SessionProfile sessionProfile) {
+
+        if (!this.logProfileData) {
+            return;
         }
-        render("");
-      }
+        for (ProjectProfile pp : sessionProfile.getProjectProfiles()) {
+            render("");
+            render(pp.getProjectName());
+            render("");
+            for (PhaseProfile phaseProfile : pp.getPhaseProfile()) {
+                render("  " + phaseProfile.getPhase() + " "
+                        + DefaultTimer.formatMilliseconds(phaseProfile.getElapsedTime()));
+                for (MojoProfile mp : phaseProfile.getMojoProfiles()) {
+                    render("    " + mp.getId() + DefaultTimer.formatMilliseconds(mp.getElapsedTime()));
+                }
+                render("");
+            }
+        }
     }
-  }
 
-  private void render(String s) {
-    System.out.println(s);
-  }
+    private void render(String s) {
+        System.out.println(s);
+    }
 }

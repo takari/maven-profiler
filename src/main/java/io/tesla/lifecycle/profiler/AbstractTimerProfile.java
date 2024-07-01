@@ -11,22 +11,21 @@ import io.tesla.lifecycle.profiler.internal.DefaultTimer;
 
 public abstract class AbstractTimerProfile extends AbstractProfile {
 
-  protected final Timer timer;
+    protected final Timer timer;
 
-  protected AbstractTimerProfile() {
-    this.timer = new DefaultTimer();
-  }
-
-  public void stop() {
-    timer.stop();
-  }
-
-  @Override
-  public long getElapsedTime() {
-    if(elapsedTime != 0) {
-      return elapsedTime;
+    protected AbstractTimerProfile() {
+        this.timer = new DefaultTimer();
     }
-    return timer.getElapsedTime();
-  }
 
+    public void stop() {
+        timer.stop();
+    }
+
+    @Override
+    public long getElapsedTime() {
+        if (elapsedTime != 0) {
+            return elapsedTime;
+        }
+        return timer.getElapsedTime();
+    }
 }

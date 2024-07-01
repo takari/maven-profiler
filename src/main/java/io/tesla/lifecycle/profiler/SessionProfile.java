@@ -12,33 +12,33 @@ import java.util.List;
 
 public class SessionProfile extends AbstractTimerProfile {
 
-  private final String name;
+    private final String name;
 
-  private List<ProjectProfile> projectProfiles;
+    private List<ProjectProfile> projectProfiles;
 
-  public SessionProfile(String name) {
-    super();
-    this.name = name;
-    this.projectProfiles = new ArrayList<>();
-  }
+    public SessionProfile(String name) {
+        super();
+        this.name = name;
+        this.projectProfiles = new ArrayList<>();
+    }
 
-  public void addProjectProfile(ProjectProfile projectProfile) {
-    projectProfiles.add(projectProfile);
-  }
+    public void addProjectProfile(ProjectProfile projectProfile) {
+        projectProfiles.add(projectProfile);
+    }
 
-  public List<ProjectProfile> getProjectProfiles() {
-    return projectProfiles;
-  }
+    public List<ProjectProfile> getProjectProfiles() {
+        return projectProfiles;
+    }
 
-  @Override
-  public String getName() {
+    @Override
+    public String getName() {
 
-    return this.name;
-  }
+        return this.name;
+    }
 
-  @Override
-  public List<? extends Profile> getChildren() {
+    @Override
+    public List<? extends Profile> getChildren() {
 
-    return getProjectProfiles();
-  }
+        return getProjectProfiles();
+    }
 }

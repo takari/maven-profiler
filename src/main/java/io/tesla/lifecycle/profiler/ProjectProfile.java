@@ -9,41 +9,40 @@ package io.tesla.lifecycle.profiler;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.maven.project.MavenProject;
 
 public class ProjectProfile extends AbstractTimerProfile {
 
-  private MavenProject project;
-  private List<PhaseProfile> phaseProfiles;
+    private MavenProject project;
+    private List<PhaseProfile> phaseProfiles;
 
-  public ProjectProfile(MavenProject project) {
-    super();
-    this.project = project;
-    this.phaseProfiles = new ArrayList<PhaseProfile>();
-  }
+    public ProjectProfile(MavenProject project) {
+        super();
+        this.project = project;
+        this.phaseProfiles = new ArrayList<PhaseProfile>();
+    }
 
-  public void addPhaseProfile(PhaseProfile phaseProfile) {
-    phaseProfiles.add(phaseProfile);
-  }
+    public void addPhaseProfile(PhaseProfile phaseProfile) {
+        phaseProfiles.add(phaseProfile);
+    }
 
-  public String getProjectName() {
-    return project.getGroupId() + ":" + project.getArtifactId() + ":" + project.getVersion();
-  }
+    public String getProjectName() {
+        return project.getGroupId() + ":" + project.getArtifactId() + ":" + project.getVersion();
+    }
 
-  public List<PhaseProfile> getPhaseProfile() {
-    return phaseProfiles;
-  }
+    public List<PhaseProfile> getPhaseProfile() {
+        return phaseProfiles;
+    }
 
-  @Override
-  public String getName() {
+    @Override
+    public String getName() {
 
-    return getProjectName();
-  }
+        return getProjectName();
+    }
 
-  @Override
-  public List<? extends Profile> getChildren() {
+    @Override
+    public List<? extends Profile> getChildren() {
 
-    return getPhaseProfile();
-  }
+        return getPhaseProfile();
+    }
 }

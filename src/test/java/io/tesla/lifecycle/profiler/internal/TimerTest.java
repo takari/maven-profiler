@@ -17,16 +17,16 @@ import org.junit.Test;
  */
 public class TimerTest {
 
-  @Test
-  public void testTimeFormats() throws Exception {
+    @Test
+    public void testTimeFormats() throws Exception {
 
-    Assert.assertEquals("1ms", DefaultTimer.formatMilliseconds(1));
-    Assert.assertEquals("1s 1ms", DefaultTimer.formatMilliseconds(1001));
-    Assert.assertEquals("1m 1s", DefaultTimer.formatMilliseconds(61 * MS_PER_SEC));
-  }
+        Assert.assertEquals("1ms", DefaultTimer.formatMilliseconds(1));
+        Assert.assertEquals("1s 1ms", DefaultTimer.formatMilliseconds(1001));
+        Assert.assertEquals("1m 1s", DefaultTimer.formatMilliseconds(61 * MS_PER_SEC));
+    }
 
-  @Test
-  public void assertDetailLoss() {
-    Assert.assertEquals("1m 1s", DefaultTimer.formatMilliseconds(61 * MS_PER_SEC + 1));
-  }
+    @Test
+    public void assertDetailLoss() {
+        Assert.assertEquals("1m 1s", DefaultTimer.formatMilliseconds(61 * MS_PER_SEC + 1));
+    }
 }

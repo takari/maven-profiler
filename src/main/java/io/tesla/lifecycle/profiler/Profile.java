@@ -17,15 +17,14 @@ import java.util.List;
  */
 public interface Profile extends Timing {
 
-  /**
-   * @return the name of this profile (name of e.g. maven project, phase, plugin).
-   */
-  String getName();
+    /**
+     * @return the name of this profile (name of e.g. maven project, phase, plugin).
+     */
+    String getName();
 
-  /**
-   * @return the {@link List} of child {@link Profile}s contained in this {@link Profile}. Will be an empty list if this
-   *         profile has not children.
-   */
-  Collection<? extends Profile> getChildren();
-
+    /**
+     * @return the {@link List} of child {@link Profile}s contained in this {@link Profile}. Will be an empty list if this
+     *         profile has not children.
+     */
+    Collection<? extends Profile> getChildren();
 }
