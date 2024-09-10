@@ -9,7 +9,18 @@ The Tesla profiler is a simple EventSpy implementation that gathers timing infor
 To profile your build you need to install the profiling extension your Maven/Tesla distribution. Find the [latest version in Maven Central][1] and install it in the `${M2_HOME}/lib/ext` directory,
 or add it to `.mvn/extensions.xml`.
 
-To active the profiling you need to enable the `profile` system property:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<extensions>
+    <extension>
+        <groupId>io.takari.maven</groupId>
+        <artifactId>maven-profiler</artifactId>
+        <version>1.0.0</version>
+  </extension>
+</extensions>
+```
+
+To activate the profiling you need to enable the `maven.profile` system property:
 
 ```
 mvn clean install -Dmaven.profile
