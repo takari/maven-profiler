@@ -37,7 +37,7 @@
     <maven.compiler.target>${takari.javaSourceVersion}</maven.compiler.target>
 
     <!-- These two should be changed in lockstep: whatever in current maven version is -->
-    <mavenVersion>3.6.3</mavenVersion>
+    <mavenVersion>3.9.9</mavenVersion>
     <sisuVersion>0.3.4</sisuVersion>
     <slf4jVersion>1.7.29</slf4jVersion>
   </properties>
