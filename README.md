@@ -1,8 +1,8 @@
 # Maven profiler
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.takari.maven.plugins/takari-lifecycle-plugin.svg?label=Maven%20Central)](https://search.maven.org/artifact/io.takari.maven.plugins/takari-lifecycle-plugin)
-[![Verify](https://github.com/takari/takari-lifecycle/actions/workflows/ci.yml/badge.svg)](https://github.com/takari/takari-lifecycle/actions/workflows/ci.yml)
-[![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/io/takari/maven/plugins/takari-lifecycle-plugin/badge.json)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/io/takari/maven/plugins/takari-lifecycle-plugin/README.md)
+[![Maven Central](https://img.shields.io/maven-central/v/io.takari.maven/maven-profiler.svg?label=Maven%20Central)](https://search.maven.org/artifact/io.takari.maven/maven-profiler)
+[![Verify](https://github.com/takari/maven-profiler/actions/workflows/ci.yml/badge.svg)](https://github.com/takari/maven-profiler/actions/workflows/ci.yml)
+[![Reproducible Builds](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/jvm-repo-rebuild/reproducible-central/master/content/io/takari/maven/maven-profiler/badge.json)](https://github.com/jvm-repo-rebuild/reproducible-central/blob/master/content/io/takari/maven/maven-profiler/README.md)
 
 The Tesla profiler is a simple EventSpy implementation that gathers timing information. It collects the time it takes to execute each mojo and gathers them within the phase they run. This was originally written to find a particular hotspot and it not formatted particularly well and definitely needs improvement.
 
