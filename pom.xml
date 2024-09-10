@@ -23,6 +23,13 @@
 
   <name>Takari :: Profiler</name>
 
+  <scm>
+    <connection>scm:git:git@github.com:takari/maven-profiler.git</connection>
+    <developerConnection>scm:git:git@github.com:takari/maven-profiler.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/takari/maven-profiler</url>
+  </scm>
+
   <properties>
     <takari.javaSourceVersion>8</takari.javaSourceVersion>
     <maven.compiler.release>${takari.javaSourceVersion}</maven.compiler.release>
