@@ -39,7 +39,7 @@
     <!-- These two should be changed in lockstep: whatever in current maven version is -->
     <mavenVersion>3.6.3</mavenVersion>
     <sisuVersion>0.3.4</sisuVersion>
-    <slf4jVersion>1.7.29</slf4jVersion>
+    <slf4jVersion>2.0.16</slf4jVersion>
   </properties>
 
   <dependencies>
