@@ -13,7 +13,7 @@
   <parent>
     <groupId>io.takari</groupId>
     <artifactId>takari</artifactId>
-    <version>60</version>
+    <version>62</version>
   </parent>
 
   <groupId>io.takari.maven</groupId>
