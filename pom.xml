@@ -13,7 +13,7 @@
   <parent>
     <groupId>io.takari</groupId>
     <artifactId>takari</artifactId>
-    <version>60</version>
+    <version>64</version>
   </parent>
 
   <groupId>io.takari.maven</groupId>
@@ -32,14 +32,12 @@
 
   <properties>
     <takari.javaSourceVersion>8</takari.javaSourceVersion>
-    <maven.compiler.release>${takari.javaSourceVersion}</maven.compiler.release>
-    <maven.compiler.source>${takari.javaSourceVersion}</maven.compiler.source>
-    <maven.compiler.target>${takari.javaSourceVersion}</maven.compiler.target>
+    <takari.lifecycleVersion>2.3.0</takari.lifecycleVersion>
 
     <!-- These two should be changed in lockstep: whatever in current maven version is -->
-    <mavenVersion>3.6.3</mavenVersion>
-    <sisuVersion>0.3.4</sisuVersion>
-    <slf4jVersion>1.7.29</slf4jVersion>
+    <mavenVersion>3.9.9</mavenVersion>
+    <sisuVersion>0.9.0.M3</sisuVersion>
+    <slf4jVersion>1.7.36</slf4jVersion>
   </properties>
 
   <dependencies>
