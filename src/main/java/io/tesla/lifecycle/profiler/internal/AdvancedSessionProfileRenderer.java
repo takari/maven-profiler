@@ -10,12 +10,13 @@ package io.tesla.lifecycle.profiler.internal;
 import io.tesla.lifecycle.profiler.AggregationProfile;
 import io.tesla.lifecycle.profiler.Profile;
 import io.tesla.lifecycle.profiler.SessionProfile;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class AdvancedSessionProfileRenderer extends AbstractSessionProfileRender
                     .format(LocalDateTime.now());
             String filename = ".maven.profiling." + timestamp + ".csv";
             try {
-                out = new FileOutputStream(filename);
+                out = Files.newOutputStream(Paths.get(filename));
                 this.csvWriter = new OutputStreamWriter(out, StandardCharsets.UTF_8);
                 try {
                     this.csvWriter.write("Depth");
