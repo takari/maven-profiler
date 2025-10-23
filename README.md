@@ -15,7 +15,7 @@ or add it to `.mvn/extensions.xml`.
     <extension>
         <groupId>io.takari.maven</groupId>
         <artifactId>maven-profiler</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
   </extension>
 </extensions>
 ```
