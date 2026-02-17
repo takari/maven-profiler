@@ -9,6 +9,6 @@ on:
 jobs:
   build:
     name: Verify
-    uses: takari/takari-gh-actions/.github/workflows/ci.yml@v3
+    uses: takari/takari-gh-actions/.github/workflows/ci.yml@v4
     with:
       jdk-matrix: '[ 17,21,24 ]'
