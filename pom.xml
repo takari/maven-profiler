@@ -35,7 +35,7 @@
     <takari.lifecycleVersion>2.3.0</takari.lifecycleVersion>
 
     <!-- These two should be changed in lockstep: whatever in current maven version is -->
-    <mavenVersion>3.9.9</mavenVersion>
+    <mavenVersion>3.9.14</mavenVersion>
     <sisuVersion>0.9.0.M3</sisuVersion>
     <slf4jVersion>1.7.36</slf4jVersion>
   </properties>
