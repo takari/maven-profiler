@@ -26,6 +26,21 @@ To activate the profiling you need to enable the `maven.profile` system property
 mvn clean install -Dmaven.profile
 ```
 
+Parallel Maven reactors are supported. Project, phase, and mojo state is isolated by project when Maven executes modules concurrently with `-T`.
+
+### Raw timeline
+
+Set `maven.profile.timeline` to record the raw Maven execution timeline as JSON Lines. The timeline can be enabled with or without the aggregate console/CSV profile:
+
+```
+mvn -T4 verify -Dmaven.profile -Dmaven.profile.timeline
+mvn -T4 verify -Dmaven.profile.timeline=target/maven-timeline.jsonl
+```
+
+An empty value or `true` writes `.maven.profiling-timeline.jsonl` in the multi-module project directory. A non-boolean value is used as the output path. Each record contains a schema version, sequence, wall and monotonic timestamps, event type, Maven thread, and applicable project/mojo identity. Session startup also records the selected reactor projects and their upstream project dependencies.
+
+The timeline contains observed Maven session, project, and mojo start/finish events. Maven does not emit a project-ready or scheduler-queue event; tools may derive an earliest-ready bound from the captured dependency graph and predecessor completion times, but should label that value as derived.
+
 Here's an example of what the output will look like:
 
 ```

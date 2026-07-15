@@ -29,4 +29,15 @@ public class TimerTest {
     public void assertDetailLoss() {
         Assert.assertEquals("1m 1s", DefaultTimer.formatMilliseconds(61 * MS_PER_SEC + 1));
     }
+
+    @Test
+    public void booleanPropertyCanDisableOutput() {
+        String property = "maven.profile.test.boolean";
+        System.setProperty(property, "false");
+        try {
+            Assert.assertFalse(AbstractSessionProfileRenderer.getBooleanProperty(property, true));
+        } finally {
+            System.clearProperty(property);
+        }
+    }
 }

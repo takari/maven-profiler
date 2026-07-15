@@ -41,7 +41,7 @@ public abstract class AbstractSessionProfileRenderer implements SessionProfileRe
             if ("true".equals(valueAsString) || "yes".equals(valueAsString)) {
                 result = true;
             } else if ("false".equals(valueAsString) || "no".equals(valueAsString)) {
-                result = true;
+                result = false;
             }
         }
         return result;
